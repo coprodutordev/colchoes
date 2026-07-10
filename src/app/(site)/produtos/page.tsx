@@ -4,7 +4,6 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getActiveProducts } from "@/lib/queries";
-import { formatCurrency } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Catálogo de Colchões Terapêuticos | REMVITA",
@@ -34,9 +33,7 @@ export default async function ProdutosPage() {
               <h3 className="text-2xl font-bold mb-2 group-hover:text-remvita-blue transition-colors">{product.name}</h3>
               <p className="text-muted-foreground mb-4">{product.description}</p>
               <div className="flex items-center justify-between">
-                {product.price != null && (
-                  <span className="text-lg font-bold text-remvita-blue">{formatCurrency(product.price)}</span>
-                )}
+                <span className="text-lg font-bold text-remvita-teal">Compre com 30% OFF</span>
                 <div className="flex items-center text-remvita-teal font-medium">
                   Detalhes <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>

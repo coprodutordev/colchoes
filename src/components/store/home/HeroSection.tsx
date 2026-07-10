@@ -74,7 +74,7 @@ export function HeroSection() {
 
           {/* Social Proof mini */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-8 text-sm text-gray-400 animate-hero-delayed">
-            <span>✓ 15 anos de garantia</span>
+            <span>✓ 10 anos de garantia</span>
             <span>✓ +5.000 famílias atendidas</span>
             <span>✓ 98% de satisfação</span>
           </div>

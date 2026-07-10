@@ -11,6 +11,7 @@ export function FinalCTA() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[100px]" />
       </div>
       <div className="container px-4 md:px-6 relative z-10 text-center">
+        <p className="text-xl font-bold text-white/80 mb-4">Compre com 30% de desconto</p>
         <h2 className="text-4xl md:text-6xl font-bold mb-6">Pronto para transformar sua vida?</h2>
         <p className="text-xl md:text-2xl mb-10 text-blue-100 max-w-2xl mx-auto">
           Dê o primeiro passo para noites de sono revigorantes. Fale com nossos consultores e encontre o modelo perfeito.

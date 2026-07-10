@@ -5,7 +5,6 @@ import { MessageCircle, FileText, Heart, Share2, Star } from "lucide-react";
 interface ProductInfoProps {
   product: {
     name: string;
-    price: string;
     rating: number;
     reviews: number;
   };
@@ -27,10 +26,9 @@ export function ProductInfo({ product }: ProductInfoProps) {
         </div>
       </div>
 
-      {/* Price / Quote */}
-      <div className="mb-8 p-6 bg-muted/50 rounded-2xl border border-border">
-        <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold mb-1">Investimento na sua saúde</p>
-        <p className="text-3xl font-bold text-remvita-blue">{product.price}</p>
+      {/* Discount CTA */}
+      <div className="mb-8 p-6 bg-remvita-teal/10 rounded-2xl border border-remvita-teal/30">
+        <p className="text-2xl font-bold text-remvita-teal">Compre com 30% de desconto</p>
         <p className="text-sm mt-2 text-muted-foreground">Parcelamento em até 12x sem juros disponível.</p>
       </div>
 
@@ -38,7 +36,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
       <div className="space-y-4 mb-10">
         <button className="w-full h-14 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-full font-bold text-lg flex items-center justify-center transition-transform hover:scale-[1.02] shadow-lg shadow-[#25D366]/20">
           <MessageCircle className="w-6 h-6 mr-3" />
-          Comprar pelo WhatsApp
+          Compre com 30% OFF
         </button>
         <button className="w-full h-14 bg-background border-2 border-remvita-blue text-remvita-blue hover:bg-remvita-light rounded-full font-bold text-lg flex items-center justify-center transition-colors">
           <FileText className="w-6 h-6 mr-3" />

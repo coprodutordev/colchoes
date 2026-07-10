@@ -6,7 +6,6 @@ import { TechnicalTable } from "@/components/store/product/TechnicalTable";
 import { ProductCharacteristics } from "@/components/store/product/ProductCharacteristics";
 import { ProductReviews } from "@/components/store/product/ProductReviews";
 import { getProductBySlug } from "@/lib/queries";
-import { formatCurrency } from "@/lib/utils";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -25,7 +24,6 @@ export default async function ProductPage({ params }: Props) {
 
   const infoProps = {
     name: product.name,
-    price: product.price != null ? formatCurrency(product.price) : "Consulte Valores",
     rating: 4.9,
     reviews: 128,
   };

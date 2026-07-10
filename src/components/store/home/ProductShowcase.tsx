@@ -8,14 +8,12 @@ const products = [
     name: "REMVITA Premium",
     slug: "remvita-premium",
     desc: "A combinação perfeita de conforto e tecnologia para a maioria dos biotipos.",
-    price: "R$ 4.990",
     image: "/produto-premium-3d.jpg",
   },
   {
     name: "REMVITA Master",
     slug: "remvita-master",
     desc: "Vibromassagem incluída. O ápice do relaxamento noturno.",
-    price: "R$ 6.990",
     image: "/produto-master-3d.jpg",
   }
 ];
@@ -49,7 +47,7 @@ export function ProductShowcase() {
                 <h3 className="text-2xl font-bold mb-2 text-foreground">{product.name}</h3>
                 <p className="text-muted-foreground mb-6">{product.desc}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-remvita-blue">A partir de {product.price}</span>
+                  <span className="text-lg font-bold text-remvita-teal">Compre com 30% OFF</span>
                   <Link href={`/produtos/${product.slug}`} className="bg-remvita-blue text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-remvita-blue/90 transition-colors">
                     Detalhes
                   </Link>

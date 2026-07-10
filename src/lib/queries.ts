@@ -135,7 +135,7 @@ const FALLBACK_PRODUCTS = [
     name: "REMVITA Premium",
     slug: "remvita-premium",
     description: "A combinação perfeita de conforto e tecnologia para a maioria dos biotipos.",
-    price: 4990,
+    price: null,
     is_active: true,
     is_featured: true,
     created_at: new Date().toISOString(),
@@ -147,7 +147,7 @@ const FALLBACK_PRODUCTS = [
     name: "REMVITA Master",
     slug: "remvita-master",
     description: "Vibromassagem incluída. O ápice do relaxamento noturno.",
-    price: 6990,
+    price: null,
     is_active: true,
     is_featured: true,
     created_at: new Date().toISOString(),
@@ -159,7 +159,7 @@ const FALLBACK_PRODUCTS = [
     name: "REMVITA Platinum",
     slug: "remvita-platinum",
     description: "Suporte reforçado e densidade ajustada para alta performance.",
-    price: 8990,
+    price: null,
     is_active: true,
     is_featured: false,
     created_at: new Date().toISOString(),
@@ -244,6 +244,6 @@ const FALLBACK_TESTIMONIALS = [
 
 const FALLBACK_FAQS = [
   { id: "fb-faq-1", question: "Qual a diferença do colchão terapêutico para o comum?", answer: "Os colchões REMVITA possuem camadas de densidade progressiva, pastilhas de infravermelho longo e campo magnético que auxiliam na recuperação celular.", display_order: 1, is_published: true },
-  { id: "fb-faq-2", question: "Possui garantia?", answer: "Sim, oferecemos 15 anos de garantia na estrutura e tecnologias.", display_order: 2, is_published: true },
+  { id: "fb-faq-2", question: "Possui garantia?", answer: "Sim, oferecemos 10 anos de garantia na estrutura e tecnologias.", display_order: 2, is_published: true },
   { id: "fb-faq-3", question: "Como é feita a entrega?", answer: "Entregamos em todo o Brasil através de transportadoras parceiras, com seguro total.", display_order: 3, is_published: true },
 ];

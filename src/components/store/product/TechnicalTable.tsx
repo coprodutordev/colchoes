@@ -7,7 +7,7 @@ export function TechnicalTable() {
     { label: "Espuma Base", value: "Rabatan Vulcanizado High-Tech" },
     { label: "Tecnologias", value: "Infravermelho Longo, Magnetoterapia" },
     { label: "Revestimento", value: "Tecido Jacquard Premium com tratamento antialérgico" },
-    { label: "Garantia", value: "15 anos na estrutura" },
+    { label: "Garantia", value: "10 anos na estrutura" },
   ];
 
   return (
