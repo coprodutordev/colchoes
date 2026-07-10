@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -32,10 +31,9 @@ export function ProductShowcase() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {products.map((product) => (
-            <motion.div 
+            <div
               key={product.slug}
-              whileHover={{ y: -6 }}
-              className="bg-card border border-border/40 rounded-3xl p-8 flex flex-col justify-between shadow-sm"
+              className="bg-card border border-border/40 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-md"
             >
               <div className="h-[250px] w-full bg-muted rounded-2xl mb-8 overflow-hidden relative">
                 <Image
@@ -44,6 +42,7 @@ export function ProductShowcase() {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
+                  priority
                 />
               </div>
               <div>
@@ -56,7 +55,7 @@ export function ProductShowcase() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

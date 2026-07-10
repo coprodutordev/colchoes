@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
 interface FaqItem {
@@ -32,18 +31,11 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
                 {faq.question}
                 {openIndex === i ? <Minus className="text-remvita-teal shrink-0" /> : <Plus className="text-remvita-blue shrink-0" />}
               </button>
-              <AnimatePresence>
-                {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pt-4 text-muted-foreground">{faq.answer}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div className={`faq-content ${openIndex === i ? "open" : ""}`}>
+                <div>
+                  <p className="pt-4 text-muted-foreground">{faq.answer}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

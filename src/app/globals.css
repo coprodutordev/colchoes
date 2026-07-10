@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "../../node_modules/shadcn/dist/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -131,6 +130,67 @@
 
 .container {
   margin-inline: auto;
+}
+
+/* ── Scroll Animations (IntersectionObserver) ────────────────────────────── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll.from-left {
+  transform: translateX(-50px);
+}
+.animate-on-scroll.from-left.is-visible {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.from-right {
+  transform: translateX(50px);
+}
+.animate-on-scroll.from-right.is-visible {
+  transform: translateX(0);
+}
+
+/* Staggered children */
+.stagger-children .animate-on-scroll:nth-child(1) { transition-delay: 0ms; }
+.stagger-children .animate-on-scroll:nth-child(2) { transition-delay: 100ms; }
+.stagger-children .animate-on-scroll:nth-child(3) { transition-delay: 200ms; }
+.stagger-children .animate-on-scroll:nth-child(4) { transition-delay: 300ms; }
+.stagger-children .animate-on-scroll:nth-child(5) { transition-delay: 400ms; }
+.stagger-children .animate-on-scroll:nth-child(6) { transition-delay: 500ms; }
+
+/* ── Hero entrance animation ─────────────────────────────────────────────── */
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-fade-in-delayed {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-hero { animation: hero-fade-in 0.8s ease-out both; }
+.animate-hero-delayed { animation: hero-fade-in-delayed 0.8s ease-out 0.6s both; }
+
+/* ── FAQ accordion ───────────────────────────────────────────────────────── */
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+.faq-content.open {
+  grid-template-rows: 1fr;
+}
+.faq-content > div {
+  overflow: hidden;
 }
 
 @layer base {

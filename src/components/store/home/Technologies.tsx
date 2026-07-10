@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface TechCard {
   title: string;
@@ -38,7 +38,7 @@ const TECH_CARDS: TechCard[] = [
 ];
 
 const cardBaseClass =
-  "rounded-3xl p-8 shadow-sm border border-border flex flex-col justify-end relative overflow-hidden";
+  "rounded-3xl p-8 shadow-sm border border-border flex flex-col justify-end relative overflow-hidden transition-transform duration-200 hover:-translate-y-1.5";
 
 const cardVariantClass: Record<string, string> = {
   default: "bg-white",
@@ -62,53 +62,56 @@ const descVariantClass: Record<string, string> = {
 };
 
 export function Technologies() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.querySelectorAll(".animate-on-scroll").forEach((child) => {
+            child.classList.add("is-visible");
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       aria-label="Tecnologias dos Colchões REMVITA"
       className="w-full py-24 bg-remvita-light/30"
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6" ref={ref}>
         <div className="flex flex-col items-center text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight text-remvita-dark mb-4"
-          >
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-remvita-dark mb-4">
             Construído com{" "}
             <span className="text-remvita-blue">Inovação.</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-gray-600 max-w-[600px] mx-auto text-lg"
-          >
+          </h2>
+          <p className="text-gray-600 max-w-[600px] mx-auto text-lg">
             O resultado de anos de pesquisa. Conheça as tecnologias que compõem
             o sistema de descanso mais avançado do mercado.
-          </motion.p>
+          </p>
         </div>
 
         {/* Bento Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:h-[600px]"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:h-[600px] stagger-children"
           role="list"
           aria-label="Lista de tecnologias"
         >
-          {TECH_CARDS.map((card, index) => {
+          {TECH_CARDS.map((card) => {
             const variant = card.accent || "default";
             return (
-              <motion.div
+              <div
                 key={card.title}
                 role="listitem"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className={`${card.span || ""} ${cardBaseClass} ${cardVariantClass[variant]}`}
+                className={`animate-on-scroll ${card.span || ""} ${cardBaseClass} ${cardVariantClass[variant]}`}
               >
                 {/* Accent glow */}
                 {variant === "default" && (
@@ -136,7 +139,7 @@ export function Technologies() {
                     {card.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Activity, Moon, HeartPulse } from "lucide-react";
 
 const problems = [
@@ -22,27 +22,43 @@ const problems = [
 ];
 
 export function ProblemsSolved() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.querySelectorAll(".animate-on-scroll").forEach((child) => {
+            child.classList.add("is-visible");
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="w-full py-24 bg-muted/30">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6" ref={ref}>
         <div className="flex flex-col items-center text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
             Dormir mal não é o <span className="text-remvita-teal">normal.</span>
           </h2>
-            <p className="text-muted-foreground max-w-[600px] mx-auto text-lg">
+          <p className="text-muted-foreground max-w-[600px] mx-auto text-lg">
             Um terço da sua vida é passado na cama. Se você sofre com algum destes problemas, seu colchão atual pode ser o culpado.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
           {problems.map((prob, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: i * 0.2 }}
-              className="bg-card border border-border/40 rounded-2xl p-8 hover:shadow-md transition-shadow"
+              className="animate-on-scroll bg-card border border-border/40 rounded-2xl p-8 hover:shadow-md transition-shadow"
             >
               <div className="mb-6 p-4 bg-remvita-gelo/40 rounded-full inline-block">
                 {prob.icon}
@@ -51,7 +67,7 @@ export function ProblemsSolved() {
               <p className="text-muted-foreground leading-relaxed">
                 {prob.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 export function ProductCharacteristics() {
@@ -15,12 +14,7 @@ export function ProductCharacteristics() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative h-[400px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden"
-          >
+          <div className="relative h-[400px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden animate-on-scroll from-left">
             <Image
               src="/colchao-camadas-3d.jpg"
               alt="Colchão REMVITA com camadas expandidas"
@@ -28,7 +22,7 @@ export function ProductCharacteristics() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-contain"
             />
-          </motion.div>
+          </div>
           
           <div className="space-y-8">
             <div>

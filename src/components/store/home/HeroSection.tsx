@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { getWhatsAppUrl } from "@/lib/config";
@@ -21,12 +20,7 @@ export function HeroSection() {
       </div>
 
       <div className="container relative z-20 px-4 md:px-6 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl space-y-6"
-        >
+        <div className="max-w-4xl space-y-6 animate-hero">
           {/* Badge indicator */}
           <div
             role="status"
@@ -79,17 +73,12 @@ export function HeroSection() {
           </div>
 
           {/* Social Proof mini */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-8 text-sm text-gray-400"
-          >
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-8 text-sm text-gray-400 animate-hero-delayed">
             <span>✓ 15 anos de garantia</span>
             <span>✓ +5.000 famílias atendidas</span>
             <span>✓ 98% de satisfação</span>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Straight divider */}
